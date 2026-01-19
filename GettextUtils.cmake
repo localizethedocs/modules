@@ -134,9 +134,9 @@ function(_override_header_entry_from_src_to_dst)
     file(READ ${OHESD_IN_SRC_FILE} IN_SRC_FILE_CNT)
     file(READ ${OHESD_IN_DST_FILE} IN_DST_FILE_CNT)
     set(HEADER_ENTRY_NAME   "Project-Id-Version")
-    string(REGEX MATCH      "${HEADER_ENTRY_NAME}: [^\\]+" HEADER_ENTRY_LINE ${IN_SRC_FILE_CNT})
+    string(REGEX MATCH      "${HEADER_ENTRY_NAME}: [^\\]*" HEADER_ENTRY_LINE ${IN_SRC_FILE_CNT})
     string(REGEX REPLACE    "${HEADER_ENTRY_NAME}: " "" HEADER_ENTRY_VALUE ${HEADER_ENTRY_LINE})
-    string(REGEX REPLACE    "${HEADER_ENTRY_NAME}: [^\\]+"
+    string(REGEX REPLACE    "${HEADER_ENTRY_NAME}: [^\\]*"
                             "${HEADER_ENTRY_NAME}: ${HEADER_ENTRY_VALUE}"
                             IN_DST_FILE_CNT "${IN_DST_FILE_CNT}")
     file(WRITE ${OHESD_IN_DST_FILE} "${IN_DST_FILE_CNT}")
